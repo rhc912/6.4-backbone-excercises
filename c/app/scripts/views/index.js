@@ -1,7 +1,7 @@
 var Backbone = require('backbone');
 var $ = require('jquery');
 var blogFormItem = require('../templates/index.hbs');
-var FormList = require('../templates/indexlist.hbs');
+var formList = require('../templates/indexlist.hbs');
 var models = require('../models/post');
 
 var BlogFormView = Backbone.View.extend({
@@ -43,7 +43,7 @@ var BlogListView = Backbone.View.extend({
 
 var BlogItemView = Backbone.View.extend({
   tagName: 'li',
-  template: FormList,
+  template: formList,
   render: function(){
     var context = this.model.toJSON();
     this.$el.html(this.template(context));
@@ -53,6 +53,7 @@ var BlogItemView = Backbone.View.extend({
 
 var BlogDetailView = Backbone.View.extend({
   render: function(){
+    console.log(this.model);
     this.$el.html(this.model.get('url'));
     return this;
   }
@@ -61,5 +62,6 @@ var BlogDetailView = Backbone.View.extend({
 module.exports = {
   'BlogFormView': BlogFormView,
   'BlogListView': BlogListView,
-  'BlogItemView': BlogItemView
+  'BlogItemView': BlogItemView,
+  'BlogDetailView': BlogDetailView
 }

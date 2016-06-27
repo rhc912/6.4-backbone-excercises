@@ -22,10 +22,11 @@ var TheAppRouter = Backbone.Router.extend({
 
   },
   detail: function(blogId){
+    console.log('detail controller');
     this.collection.fetch().done(function(){
       var blog = this.collection.get(blogId);
       var blogDetail = new views.BlogDetailView({model: blog});
-
+      console.log(blogDetail.render().el);
       $('.app').html(blogDetail.render().el);
     }.bind(this));
   }
